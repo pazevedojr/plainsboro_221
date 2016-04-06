@@ -1,0 +1,31 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Plainsboro 221</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+    <h1>Plainsboro 221</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        <p>
+            <label for="id_specialization">Especialização:</label>
+            <input id="id_specialization" type="text" maxlength="100"/>
+        </p>
+        <p>
+            <label for="id_city">City:</label>
+            <input id="id_city" type="text" maxlength="100"/>
+        </p>
+        <input type="submit" value="Buscar"/>
+    </form>
+</body>
+</html>

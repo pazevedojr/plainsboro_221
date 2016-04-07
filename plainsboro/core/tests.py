@@ -1,4 +1,5 @@
 from django.test import TestCase
+from plainsboro.core.forms import FindDoctorForm
 
 
 class FindDoctorsTests(TestCase):
@@ -19,3 +20,11 @@ class FindDoctorsTests(TestCase):
 
     def test_csrf(self):
         self.assertContains(self.response, 'csrfmiddlewaretoken')
+
+    def test_has_form(self):
+        form = self.response.context['form']
+        self.assertIsInstance(form, FindDoctorForm)
+
+    def test_form_has_fields(self):
+        form = self.response.context['form']
+        self.assertSequenceEqual(['specialization', 'city'], list(form.fields))

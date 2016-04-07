@@ -18,12 +18,18 @@
     <form action="." method="post">
         {% csrf_token %}
         <p>
-            <label for="id_specialization">Especialização:</label>
-            <input id="id_specialization" type="text" maxlength="100"/>
+            <label for={{ form.specialization.id_for_label }}>
+                {{ form.specialization.label }}
+            </label>
+            {{ form.specialization.errors }}
+            {{ form.specialization }}
         </p>
         <p>
-            <label for="id_city">Cidade:</label>
-            <input id="id_city" type="text" maxlength="100"/>
+            <label for={{ form.city.id_for_label }}>
+                {{ form.city.label }}
+            </label>
+            {{ form.city.errors }}
+            {{ form.city }}
         </p>
         <input type="submit" value="Buscar"/>
 

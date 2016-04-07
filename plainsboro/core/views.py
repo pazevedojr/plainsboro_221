@@ -1,5 +1,7 @@
 from django.shortcuts import render
+from plainsboro.core.forms import FindDoctorForm
 
 
 def home(request):
-    return render(request, 'index.html')
+    context = {'form': FindDoctorForm()}
+    return render(request, 'index.html', context)

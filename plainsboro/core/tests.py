@@ -13,10 +13,14 @@ class FindDoctorsTests(TestCase):
         self.assertTemplateUsed(self.response, 'index.html')
 
     def test_html(self):
-        self.assertContains(self.response, '<form')
-        self.assertContains(self.response, '<input', 4)
-        self.assertContains(self.response, 'type="text"', 2)
-        self.assertContains(self.response, 'type="submit"')
+        tags = (('<form', 1),
+                ('<input', 4),
+                ('type="text"', 2),
+                ('type="submit"', 1))
+
+        for tag, qtde in tags:
+            with self.subTest():
+                self.assertContains(self.response, tag, qtde)
 
     def test_csrf(self):
         self.assertContains(self.response, 'csrfmiddlewaretoken')
@@ -28,3 +32,11 @@ class FindDoctorsTests(TestCase):
     def test_form_has_fields(self):
         form = self.response.context['form']
         self.assertSequenceEqual(['specialization', 'city'], list(form.fields))
+
+
+class FindDoctorsSuccessMessage(TestCase):
+    def test_message(self):
+        data = dict(specialization='Oftalmologista', city='Campinas')
+
+        response = self.client.post('/', data, follow=True)
+        self.assertContains(response, 'Procurando médicos na sua região...')

@@ -33,6 +33,12 @@
         </p>
         <input type="submit" value="Buscar"/>
 
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+
         <h2>Médicos na sua região</h2>
 
         <ul>

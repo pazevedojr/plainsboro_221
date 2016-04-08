@@ -40,32 +40,23 @@
         {% endif %}
 
         <h2>Médicos na sua região</h2>
-
         <ul>
+        {% for doctor in doctors %}
             <li>
                 <p>
-                    <b> ---- Nome ---- </b> <br>
-                    ---- Endereço ---- <br>
-                    ---- Telefone ---- <br>
-                    ---- Email ---- <br>
+                    <a href="{{ doctor.get_absolute_url }}">
+                        <b>{{ doctor.name }}</b>
+                    </a><br>
+                    {{ doctor.specialization }}
+                    {{ doctor.address }} <br>
+                    {{ doctor.city }}
+                    {{ doctor.phone }} <br>
+                    {{ doctor.email }} <br>
                 </p>
             </li>
-            <li>
-                <p>
-                    <b> ---- Nome ---- </b> <br>
-                    ---- Endereço ---- <br>
-                    ---- Telefone ---- <br>
-                    ---- Email ---- <br>
-                </p>
-            </li>
-            <li>
-                <p>
-                    <b> ---- Nome ---- </b> <br>
-                    ---- Endereço ---- <br>
-                    ---- Telefone ---- <br>
-                    ---- Email ---- <br>
-                </p>
-            </li>
+            {% empty %}
+            <p>Não existem médicos disponíveis na sua região.</p>
+        {% endfor %}
         </ul>
     </form>
 </body>

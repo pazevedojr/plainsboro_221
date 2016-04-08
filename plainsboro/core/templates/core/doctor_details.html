@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Details</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+    <h1>{{ doctor.name }}</h1>
+    <p>{{ doctor.specialization }}</p>
+    <p>{{ doctor.address }}</p>
+    <p>{{ doctor.city }}</p>
+    <p>{{ doctor.phone }}</p>
+    <p>{{ doctor.email }}</p>
+
+    <form action="." method="post">
+        {% csrf_token %}
+        <label for="id_for_label_email">Email de contato</label>
+        <input type="email" name="email"/><br>
+        <input type="datetime-local"/><br>
+        <input type="submit" value="Agendar consulta"/>
+    </form>
+</body>
+</html>

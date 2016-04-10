@@ -2,7 +2,7 @@ from django.test import TestCase
 from plainsboro.core.forms import DoctorSubscribeForm
 
 
-class TestDoctorSubscribe(TestCase):
+class DoctorSubscribeTest(TestCase):
     def setUp(self):
         self.response = self.client.get('/doctor_subscribe/')
 
@@ -29,14 +29,8 @@ class TestDoctorSubscribe(TestCase):
         form = self.response.context['form']
         self.assertIsInstance(form, DoctorSubscribeForm)
 
-    def test_form_has_fields(self):
-        form = self.response.context['form']
-        fields = ['name', 'address', 'neighborhood', 'city', 'phone',
-                  'email', 'specialization']
-        self.assertSequenceEqual(fields, list(form.fields))
 
-
-class FindDoctorsMessage(TestCase):
+class DoctorSubscribeMessageTest(TestCase):
     def test_error_message(self):
         data = dict(name='', address='', neighborhood='', city='', phone='',
                     email='', specialization='')

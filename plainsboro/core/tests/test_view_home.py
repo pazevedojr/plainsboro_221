@@ -2,7 +2,7 @@ from django.test import TestCase
 from plainsboro.core.forms import FindDoctorForm
 
 
-class FindDoctorsTests(TestCase):
+class FindDoctorsTest(TestCase):
     def setUp(self):
         self.response = self.client.get('')
 
@@ -35,7 +35,7 @@ class FindDoctorsTests(TestCase):
         self.assertSequenceEqual(fields, list(form.fields))
 
 
-class FindDoctorsMessage(TestCase):
+class FindDoctorsMessageTest(TestCase):
     def test_error_message(self):
         data = dict(specialization='', city='')
 

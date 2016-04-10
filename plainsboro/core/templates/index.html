@@ -32,32 +32,33 @@
             {{ form.city }}
         </p>
         <input type="submit" value="Buscar"/>
-
-        {% if messages %}
-            {% for message in messages %}
-                <p>{{ message }}</p>
-            {% endfor %}
-        {% endif %}
-
-        <h2>Médicos na sua região</h2>
-        <ul>
-        {% for doctor in doctors %}
-            <li>
-                <p>
-                    <a href="{{ doctor.get_absolute_url }}">
-                        <b>{{ doctor.name }}</b>
-                    </a><br>
-                    {{ doctor.specialization }}
-                    {{ doctor.address }} <br>
-                    {{ doctor.city }}
-                    {{ doctor.phone }} <br>
-                    {{ doctor.email }} <br>
-                </p>
-            </li>
-            {% empty %}
-            <p>Não existem médicos disponíveis na sua região.</p>
-        {% endfor %}
-        </ul>
     </form>
+    <a href="/doctor_subscribe/">Cadastre seu consultório</a>
+
+    {% if messages %}
+        {% for message in messages %}
+            <p>{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+
+    <h2>Médicos na sua região</h2>
+    <ul>
+    {% for doctor in doctors %}
+        <li>
+            <p>
+                <a href="{{ doctor.get_absolute_url }}">
+                    <b>{{ doctor.name }}</b>
+                </a><br>
+                {{ doctor.specialization }}
+                {{ doctor.address }} <br>
+                {{ doctor.city }}
+                {{ doctor.phone }} <br>
+                {{ doctor.email }} <br>
+            </p>
+        </li>
+        {% empty %}
+        <p>Não existem médicos disponíveis na sua região.</p>
+    {% endfor %}
+    </ul>
 </body>
 </html>

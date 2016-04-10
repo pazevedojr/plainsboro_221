@@ -1,0 +1,79 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastre seu consultório</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+</head>
+<body>
+    <h1>Cadastre seu consultório</h1>
+    <form action="." method="post">
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+        <p>
+            <label for={{ form.name.id_for_label }}>
+                {{ form.name.label }}
+            </label>
+            {{ form.name.errors }}
+            {{ form.name }}
+        </p>
+        <p>
+            <label for={{ form.specialization.id_for_label }}>
+                {{ form.specialization.label }}
+            </label>
+            {{ form.specialization.errors }}
+            {{ form.specialization }}
+        </p>
+        <p>
+            <label for={{ form.address.id_for_label }}>
+                {{ form.address.label }}
+            </label>
+            {{ form.address.errors }}
+            {{ form.address }}
+        </p>
+        <p>
+            <label for={{ form.neighborhood.id_for_label }}>
+                {{ form.neighborhood.label }}
+            </label>
+            {{ form.neighborhood.errors }}
+            {{ form.neighborhood }}
+        </p>
+        <p>
+            <label for={{ form.city.id_for_label }}>
+                {{ form.city.label }}
+            </label>
+            {{ form.city.errors }}
+            {{ form.city }}
+        </p>
+        <p>
+            <label for={{ form.phone.id_for_label }}>
+                {{ form.phone.label }}
+            </label>
+            {{ form.phone.errors }}
+            {{ form.phone }}
+        </p>
+        <p>
+            <label for={{ form.email.id_for_label }}>
+                {{ form.email.label }}
+            </label>
+            {{ form.email.errors }}
+            {{ form.email }}
+        </p>
+        <input type="submit" value="Cadastrar"/>
+    </form>
+
+    <a href="/">Home</a>
+</body>
+</html>

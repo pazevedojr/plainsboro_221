@@ -22,5 +22,5 @@ class DoctorModelTest(TestCase):
         self.assertEqual('Dr. Hao123', str(self.doctor))
 
     def test_get_absolute_url(self):
-        url = r('speaker_detail', slug=self.doctor.slug)
+        url = r('doctor_details', slug=self.doctor.slug)
         self.assertEqual(url, self.doctor.get_absolute_url())

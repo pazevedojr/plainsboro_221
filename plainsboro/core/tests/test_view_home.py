@@ -31,12 +31,13 @@ class FindDoctorsTests(TestCase):
 
     def test_form_has_fields(self):
         form = self.response.context['form']
-        self.assertSequenceEqual(['specialization', 'city'], list(form.fields))
+        fields = ['specialization', 'city']
+        self.assertSequenceEqual(fields, list(form.fields))
 
 
-class FindDoctorsSuccessMessage(TestCase):
-    def test_message(self):
-        data = dict(specialization='Oftalmologista', city='Campinas')
+class FindDoctorsMessage(TestCase):
+    def test_error_message(self):
+        data = dict(specialization='', city='')
 
         response = self.client.post('/', data, follow=True)
-        self.assertContains(response, 'Procurando médicos na sua região...')
+        self.assertContains(response, 'O formulário contem erros.')

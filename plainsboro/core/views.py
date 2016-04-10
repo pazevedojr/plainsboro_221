@@ -30,6 +30,24 @@ def doctor_subscribe(request):
         return render(request, 'core/doctor_subscribe.html', context)
 
 
+def create(request):
+    form = FindDoctorForm(request.POST)
+
+    if not form.is_valid():
+        messages.error(request, 'O formulário contem erros.')
+        return render(request, 'index.html', {'form': form})
+
+    doctors = Doctor.objects.all().filter(
+        specialization=request.POST['specialization'],
+        city=request.POST['city']
+    )
+
+    context = {'form': FindDoctorForm(),
+               'doctors': doctors}
+
+    return render(request, 'index.html', context)
+
+
 def subscribe(request):
     form = DoctorSubscribeForm(request.POST)
 
@@ -56,20 +74,4 @@ def subscribe(request):
     context = {'form': DoctorSubscribeForm(),
                'doctor': doctor}
 
-    return render(request, 'core/doctor_subscribe', context)
-
-
-def create(request):
-    form = FindDoctorForm(request.POST)
-
-    if not form.is_valid():
-        messages.error(request, 'O formulário contem erros.')
-        return render(request, 'index.html', {'form': form})
-
-    doctors = Doctor.objects.get(specialization=request.POST['specialization'],
-                                 city=request.POST['city'])
-
-    context = {'form': FindDoctorForm(),
-               'doctors': doctors}
-
-    return render(request, 'index.html', context)
+    return render(request, 'core/doctor_subscribe.html', context)

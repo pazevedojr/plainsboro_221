@@ -50,9 +50,10 @@
                 <a href="{{ doctor.get_absolute_url }}">
                     <b>{{ doctor.name }}</b>
                 </a><br>
-                {{ doctor.specialization }}
-                {{ doctor.address }} <br>
-                {{ doctor.city }}
+                {{ doctor.specialization }} <br>
+                {{ doctor.address }} -
+                {{ doctor.neighborhood }} -
+                {{ doctor.city }} <br>
                 {{ doctor.phone }} <br>
                 {{ doctor.email }} <br>
             </p>

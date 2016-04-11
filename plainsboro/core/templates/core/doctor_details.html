@@ -15,11 +15,14 @@
 </head>
 <body>
     <h1>{{ doctor.name }}</h1>
-    <p>{{ doctor.specialization }}</p>
-    <p>{{ doctor.address }}</p>
-    <p>{{ doctor.city }}</p>
-    <p>{{ doctor.phone }}</p>
-    <p>{{ doctor.email }}</p>
+    <p>
+        {{ doctor.specialization }} <br>
+        {{ doctor.address }} -
+        {{ doctor.neighborhood }} -
+        {{ doctor.city }} <br>
+        {{ doctor.phone }} <br>
+        {{ doctor.email }} <br>
+    </p>
 
     <form action="." method="post">
         {% csrf_token %}

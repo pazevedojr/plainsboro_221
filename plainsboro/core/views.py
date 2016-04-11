@@ -1,6 +1,6 @@
 from django.contrib import messages
 from django.template.defaultfilters import slugify
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from plainsboro.core.forms import FindDoctorForm, DoctorSubscribeForm
 from plainsboro.core.models import Doctor
 
@@ -14,12 +14,8 @@ def home(request):
 
 
 def doctor_details(request, slug):
-    context = {'doctor': Doctor(name='Dr. Hao123',
-                                slug='hao123',
-                                address='Rua Hao, 123',
-                                phone='+55 11 123123123',
-                                email='hao123@hao123.com')}
-    return render(request, 'core/doctor_details.html', context)
+    doctor = get_object_or_404(Doctor, slug=slug)
+    return render(request, 'core/doctor_details.html', {'doctor': doctor})
 
 
 def doctor_subscribe(request):

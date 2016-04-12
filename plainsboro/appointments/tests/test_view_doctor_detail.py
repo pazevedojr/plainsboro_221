@@ -1,5 +1,6 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
+from plainsboro.appointments.forms import MakeAppointmentForm
 from plainsboro.core.models import Doctor
 
 
@@ -19,7 +20,8 @@ class DoctorDetailsTest(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        self.assertTemplateUsed(self.response, 'core/doctor_details.html')
+        self.assertTemplateUsed(self.response,
+                                'appointments/doctor_details.html')
 
     def test_html(self):
         contents = [
@@ -35,12 +37,42 @@ class DoctorDetailsTest(TestCase):
             with self.subTest():
                 self.assertContains(self.response, expected)
 
+    def test_html_form(self):
+        tags = (('<form', 1),
+                ('<input', 5),
+                ('type="email"', 1),
+                ('type="text"', 2),
+                ('type="submit"', 1))
+
+        for tag, qtde in tags:
+            with self.subTest():
+                self.assertContains(self.response, tag, qtde)
+
+    def test_csrf(self):
+        self.assertContains(self.response, 'csrfmiddlewaretoken')
+
+    def test_form_has_fields(self):
+        form = self.response.context['form']
+        fields = ['email', 'date', 'time']
+        self.assertSequenceEqual(fields, list(form.fields))
+
     def test_context(self):
         doctor = self.response.context['doctor']
-        self.assertIsInstance(doctor, Doctor)
+        form = self.response.context['form']
+
+        context = ((doctor, Doctor),
+                   (form, MakeAppointmentForm))
+
+        for obj, class_ in context:
+            with self.subTest():
+                self.assertIsInstance(obj, class_)
 
 
 class DoctorDetailsNotFoundTest(TestCase):
     def test_not_found(self):
         response = self.client.get(r('doctor_details', slug='not-found'))
         self.assertEqual(404, response.status_code)
+
+
+
+

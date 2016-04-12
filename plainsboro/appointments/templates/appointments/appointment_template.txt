@@ -1,0 +1,12 @@
+Solicitação de agendamento de consulta.
+
+Nome: {{ appointment.name }}
+Data: {{ appointment.date }}
+Horário: {{ appointment.time }}
+
+Em até 24 horas úteis, nossa equipe entrará em contato para confirmar seu
+agendamento.
+
+Atenciosamente,
+--
+Plainsboro 221

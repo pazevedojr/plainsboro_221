@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'test_without_migrations',
     'plainsboro.core',
+    'plainsboro.appointments',
 ]
 
 MIDDLEWARE_CLASSES = [

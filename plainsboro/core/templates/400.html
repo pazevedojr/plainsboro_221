@@ -1,20 +1,8 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>400 - Requisição imprópria</title>
+{% block title %}400 - Requisição imprópria{% endblock title %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-</head>
-<body>
+{% block content %}
     <h1>400 - Requisição imprópria</h1>
     <p>A requisição enviada não pode ser atendida.</p>
-</body>
-</html>
+{% endblock content %}

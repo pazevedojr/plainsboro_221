@@ -1,20 +1,8 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>403 - Proibido</title>
+{% block title %}403 - Proibido{% endblock title %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-</head>
-<body>
+{% block content %}
     <h1>403 - Proibido</h1>
     <p>Você não tem permissão para acessar esse endereço.</p>
-</body>
-</html>
+{% endblock content %}

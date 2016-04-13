@@ -1,19 +1,8 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>500 - Erro interno inesperado</title>
+{% block title %}500 - Erro interno inesperado{% endblock title %}
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-</head>
-<body>
+{% block content %}
     <h1>500 - Erro interno inesperado</h1>
     <p>Desculpe! Um erro inesperado aconteceu.</p>
     <br>
@@ -21,5 +10,4 @@
         Um grupo de estagiários bem treinados já está trabalhando para
         solucionar o problema.
     </p>
-</body>
-</html>
+{% endblock content %}

@@ -1,19 +1,6 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Plainsboro 221</title>
-
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
-
-    <!-- CSS -->
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-</head>
-<body>
+{% block content %}
     <h1>Plainsboro 221</h1>
     <form action="." method="post">
         {% csrf_token %}
@@ -44,23 +31,22 @@
 
     <h2>Médicos na sua região</h2>
     <ul>
-    {% for doctor in doctors %}
-        <li>
-            <p>
-                <a href="{{ doctor.get_absolute_url }}">
-                    <b>{{ doctor.name }}</b>
-                </a><br>
-                {{ doctor.specialization }} <br>
-                {{ doctor.address }} -
-                {{ doctor.neighborhood }} -
-                {{ doctor.city }} <br>
-                {{ doctor.phone }} <br>
-                {{ doctor.email }} <br>
-            </p>
-        </li>
-        {% empty %}
-        <p>Não existem médicos disponíveis na sua região.</p>
-    {% endfor %}
+        {% for doctor in doctors %}
+            <li>
+                <p>
+                    <a href="{{ doctor.get_absolute_url }}">
+                        <b>{{ doctor.name }}</b>
+                    </a><br>
+                    {{ doctor.specialization }} <br>
+                    {{ doctor.address }} -
+                    {{ doctor.neighborhood }} -
+                    {{ doctor.city }} <br>
+                    {{ doctor.phone }} <br>
+                    {{ doctor.email }} <br>
+                </p>
+            </li>
+            {% empty %}
+            <p>Não existem médicos disponíveis na sua região.</p>
+        {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock content %}

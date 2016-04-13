@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>
+            {% block title %}
+                Plainsboro 221
+            {% endblock title %}
+        </title>
+
+        <!-- Favicon -->
+        <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    </head>
+<body>
+    {% block content %}
+    {% endblock content %}
+    <footer>
+        <p>
+            <a href="https://github.com/vribeiro1/plainsboro_221"
+               class="fa fa-github" >
+                Siga o projeto no Github
+            </a>
+        </p>
+        <small>
+            &copy Copyright 2016 - Vinicius Ribeiro - Todos os direitos
+            reservados
+        </small><br>
+    </footer>
+</body>
+</html>

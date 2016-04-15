@@ -1,6 +1,6 @@
 Solicitação de agendamento de consulta.
 
-Nome: {{ appointment.name }}
+Email: {{ appointment.email }}
 Data: {{ appointment.date }}
 Horário: {{ appointment.time }}
 

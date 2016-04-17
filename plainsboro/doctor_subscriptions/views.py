@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 from django.template.defaultfilters import slugify
 from plainsboro.doctor_subscriptions.forms import DoctorSubscribeForm
@@ -13,6 +13,10 @@ def doctor_subscribe(request):
         return render(request,
                       'doctor_subscriptions/doctor_subscribe.html',
                       context)
+
+
+def edit_profile(request):
+    return render(request, 'doctor_subscriptions/edit_profile.html')
 
 
 def subscribe(request):

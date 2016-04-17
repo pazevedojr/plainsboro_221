@@ -18,7 +18,8 @@ def doctor_details(request, slug):
         context = {'doctor': doctor,
                    'form': MakeAppointmentForm()}
         return render(request,
-                      'appointments/doctor_details.html', context)
+                      'appointments/doctor_details.html',
+                      context)
 
 
 def appointment(request, doctor):

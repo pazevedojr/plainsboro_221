@@ -1,7 +1,8 @@
 from django.conf.urls import url
 from django.contrib import admin
 from plainsboro.appointments.views import doctor_details
-from plainsboro.core.views import home, doctor_subscribe
+from plainsboro.core.views import home
+from plainsboro.doctor_subscriptions.views import doctor_subscribe
 
 urlpatterns = [
     url(r'^$', home),

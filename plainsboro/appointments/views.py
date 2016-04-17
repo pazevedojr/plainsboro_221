@@ -6,7 +6,7 @@ from django.shortcuts import render, get_object_or_404
 from django.template.loader import render_to_string
 
 from plainsboro.appointments.forms import MakeAppointmentForm
-from plainsboro.core.models import Doctor
+from plainsboro.doctor_subscriptions.models import Doctor
 
 
 def doctor_details(request, slug):

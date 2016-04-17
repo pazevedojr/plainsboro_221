@@ -1,5 +1,5 @@
 from django.test import TestCase
-from plainsboro.core.models import Doctor
+from plainsboro.doctor_subscriptions.models import Doctor
 from django.shortcuts import resolve_url as r
 
 

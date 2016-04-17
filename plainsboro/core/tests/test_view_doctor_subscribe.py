@@ -1,5 +1,5 @@
 from django.test import TestCase
-from plainsboro.core.forms import DoctorSubscribeForm
+from plainsboro.doctor_subscriptions.forms import DoctorSubscribeForm
 
 
 class DoctorSubscribeTest(TestCase):
@@ -10,7 +10,8 @@ class DoctorSubscribeTest(TestCase):
         self.assertEqual(200, self.response.status_code)
 
     def test_template(self):
-        self.assertTemplateUsed(self.response, 'core/doctor_subscribe.html')
+        self.assertTemplateUsed(self.response,
+                                'doctor_subscriptions/doctor_subscribe.html')
 
     def test_html(self):
         tags = (('<form', 1),

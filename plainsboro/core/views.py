@@ -1,8 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render
-from django.template.defaultfilters import slugify
-from plainsboro.core.forms import FindDoctorForm, DoctorSubscribeForm
-from plainsboro.core.models import Doctor
+from plainsboro.core.forms import FindDoctorForm
+from plainsboro.doctor_subscriptions.models import Doctor
 
 
 def home(request):
@@ -11,14 +10,6 @@ def home(request):
     else:
         context = {'form': FindDoctorForm()}
         return render(request, 'index.html', context)
-
-
-def doctor_subscribe(request):
-    if request.method == 'POST':
-        return subscribe(request)
-    else:
-        context = {'form': DoctorSubscribeForm()}
-        return render(request, 'core/doctor_subscribe.html', context)
 
 
 def create(request):
@@ -37,32 +28,3 @@ def create(request):
                'doctors': doctors}
 
     return render(request, 'index.html', context)
-
-
-def subscribe(request):
-    form = DoctorSubscribeForm(request.POST)
-
-    if not form.is_valid():
-        messages.error(request, 'O formulário contem erros.')
-        return render(request, 'core/doctor_subscribe.html', {'form': form})
-
-    name = request.POST['name']
-    slug = slugify(name)
-    address = request.POST['address']
-    neighborhood = request.POST['neighborhood']
-    city = request.POST['city']
-    phone = request.POST['phone']
-    email = request.POST['email']
-    specialization = request.POST['specialization']
-
-    doctor = Doctor.objects.create(
-        name=name, slug=slug, address=address, neighborhood=neighborhood,
-        city=city, phone=phone, email=email, specialization=specialization
-    )
-
-    messages.success(request, 'Consultório cadastrado com sucesso!')
-
-    context = {'form': DoctorSubscribeForm(),
-               'doctor': doctor}
-
-    return render(request, 'core/doctor_subscribe.html', context)

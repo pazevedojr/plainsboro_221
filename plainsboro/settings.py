@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'test_without_migrations',
     'plainsboro.core',
     'plainsboro.appointments',
+    'plainsboro.doctor_subscriptions',
 ]
 
 MIDDLEWARE_CLASSES = [

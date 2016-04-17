@@ -2,7 +2,7 @@ import datetime
 
 from django.core import mail
 from django.test import TestCase
-from plainsboro.core.models import Doctor
+from plainsboro.doctor_subscriptions.models import Doctor
 
 
 class MakeAppointmentTest(TestCase):

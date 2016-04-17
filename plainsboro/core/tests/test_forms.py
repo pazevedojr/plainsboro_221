@@ -1,5 +1,6 @@
 from django.test import TestCase
-from plainsboro.core.forms import FindDoctorForm, DoctorSubscribeForm
+from plainsboro.core.forms import FindDoctorForm
+from plainsboro.doctor_subscriptions.forms import DoctorSubscribeForm
 
 
 class FindDoctorFormTest(TestCase):

@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.shortcuts import resolve_url as r
 from plainsboro.appointments.forms import MakeAppointmentForm
-from plainsboro.core.models import Doctor
+from plainsboro.doctor_subscriptions.models import Doctor
 
 
 class DoctorDetailsTest(TestCase):

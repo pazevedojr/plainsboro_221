@@ -30,8 +30,6 @@ class DoctorSubscribeTest(TestCase):
         form = self.response.context['form']
         self.assertIsInstance(form, DoctorSubscribeForm)
 
-
-class DoctorSubscribeMessageTest(TestCase):
     def test_error_message(self):
         data = dict(name='', address='', neighborhood='', city='', phone='',
                     email='', specialization='')

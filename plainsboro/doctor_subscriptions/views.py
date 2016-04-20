@@ -1,8 +1,9 @@
-from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
+from django.shortcuts import render, get_object_or_404
 from django.template.defaultfilters import slugify
 from plainsboro.doctor_subscriptions.forms import DoctorSubscribeForm
 from plainsboro.doctor_subscriptions.models import Doctor
+from plainsboro.doctor_subscriptions.forms import EditProfileForm
 
 
 def doctor_subscribe(request):
@@ -15,8 +16,16 @@ def doctor_subscribe(request):
                       context)
 
 
-def edit_profile(request):
-    return render(request, 'doctor_subscriptions/edit_profile.html')
+def edit_profile(request, slug):
+    doctor = get_object_or_404(Doctor, slug=slug)
+
+    if request.method == 'POST':
+        return edit(request, doctor)
+    else:
+        context = {'form': EditProfileForm()}
+        return render(request,
+                      'doctor_subscriptions/edit_profile.html',
+                      context)
 
 
 def subscribe(request):
@@ -48,3 +57,31 @@ def subscribe(request):
                'doctor': doctor}
 
     return render(request, 'core/doctor_subscribe.html', context)
+
+
+def edit(request, doctor):
+    form = EditProfileForm(request.POST)
+
+    if not form.is_valid():
+        messages.error(request, 'O formulário contem erros.')
+        return render(request,
+                      'doctor_subscriptions/edit_profile.html',
+                      {'form': form})
+
+    doctor.name = request.POST['name']
+    doctor.address = request.POST['address']
+    doctor.neighborhood = request.POST['neighborhood']
+    doctor.city = request.POST['city']
+    doctor.phone = request.POST['phone']
+    doctor.email = request.POST['email']
+    doctor.specialization = request.POST['specialization']
+    doctor.save()
+
+    messages.success(request, 'Perfil atualizado com sucesso!')
+
+    context = {'form': EditProfileForm(),
+               'doctor': doctor}
+
+    return render(request,
+                  'doctor_subscriptions/edit_profile.html',
+                  context)

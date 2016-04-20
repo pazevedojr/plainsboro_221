@@ -6,33 +6,60 @@
     <h1>Editar perfil</h1>
 
     <form>
+        {% csrf_token %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
         <p>
-            <label for="id_for_name">Name</label>
-            <input type="text" name="id_for_name"/>
+            <label for={{ form.name.id_for_label }}>
+                {{ form.name.label }}
+            </label>
+            {{ form.name.errors }}
+            {{ form.name }}
         </p>
         <p>
-            <label for="id_for_address">Endereço</label>
-            <input type="text" name="id_for_address"/>
+            <label for={{ form.specialization.id_for_label }}>
+                {{ form.specialization.label }}
+            </label>
+            {{ form.specialization.errors }}
+            {{ form.specialization }}
         </p>
         <p>
-            <label for="id_for_neighborhood">Bairro</label>
-            <input type="text" name="id_for_neighborhood"/>
+            <label for={{ form.address.id_for_label }}>
+                {{ form.address.label }}
+            </label>
+            {{ form.address.errors }}
+            {{ form.address }}
         </p>
         <p>
-            <label for="id_for_city">Cidade</label>
-            <input type="text" name="id_for_city"/>
+            <label for={{ form.neighborhood.id_for_label }}>
+                {{ form.neighborhood.label }}
+            </label>
+            {{ form.neighborhood.errors }}
+            {{ form.neighborhood }}
         </p>
         <p>
-            <label for="id_for_phone">Telefone</label>
-            <input type="text" name="id_for_phone"/>
+            <label for={{ form.city.id_for_label }}>
+                {{ form.city.label }}
+            </label>
+            {{ form.city.errors }}
+            {{ form.city }}
         </p>
         <p>
-            <label for="id_for_email">Email</label>
-            <input type="email" name="id_for_email"/>
+            <label for={{ form.phone.id_for_label }}>
+                {{ form.phone.label }}
+            </label>
+            {{ form.phone.errors }}
+            {{ form.phone }}
         </p>
         <p>
-            <label for="id_for_specialization">Especialização</label>
-            <input type="text" name="id_for_specialization"/>
+            <label for={{ form.email.id_for_label }}>
+                {{ form.email.label }}
+            </label>
+            {{ form.email.errors }}
+            {{ form.email }}
         </p>
         <input type="submit" value="Salvar">
     </form>

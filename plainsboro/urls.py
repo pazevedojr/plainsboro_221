@@ -9,5 +9,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^doctor_subscribe/$', doctor_subscribe),
     url(r'^doctors/(?P<slug>[\w-]+)/$', doctor_details, name='doctor_details'),
-    url(r'^edit_profile/$', edit_profile),
+    url(r'^edit_profile/(?P<slug>[\w-]+)/$', edit_profile),
 ]

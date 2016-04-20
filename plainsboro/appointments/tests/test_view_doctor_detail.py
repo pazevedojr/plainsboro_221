@@ -14,6 +14,7 @@ class DoctorDetailsTest(TestCase):
             city='Campinas',
             phone='+55 11 123123123',
             email='hao123@hao123.com')
+
         self.response = self.client.get(r('doctor_details', slug='hao123'))
 
     def test_get(self):

@@ -16,6 +16,13 @@ def doctor_subscribe(request):
                       context)
 
 
+def doctor_profile(request, slug):
+    doctor = get_object_or_404(Doctor, slug=slug)
+    context = {'doctor': doctor}
+
+    return render(request, 'doctor_subscriptions/doctor_profile.html', context)
+
+
 def edit_profile(request, slug):
     doctor = get_object_or_404(Doctor, slug=slug)
 

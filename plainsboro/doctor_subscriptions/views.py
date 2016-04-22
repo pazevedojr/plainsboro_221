@@ -63,7 +63,9 @@ def subscribe(request):
     context = {'form': DoctorSubscribeForm(),
                'doctor': doctor}
 
-    return render(request, 'core/doctor_subscribe.html', context)
+    return render(request,
+                  'doctor_subscriptions/doctor_subscribe.html',
+                  context)
 
 
 def edit(request, doctor):
